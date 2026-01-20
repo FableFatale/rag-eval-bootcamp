@@ -1,5 +1,6 @@
 from rag_system.core import OptimizationRAG
 
+
 def main():
     print("🚀 Starting Pure Python RAG Demo (Framework-Free)...")
     print("-" * 50)
@@ -21,17 +22,18 @@ def main():
     # Query
     question = "What OS does it run on?"
     print(f"\n[Step 2] Asking Question: '{question}'")
-    
+
     response = rag.query(question)
-    
+
     print("\n[Step 3] Retrieval Results:")
-    print(response['source_documents'])
-    
+    print(response["source_documents"])
+
     print("\n[Step 4] Simulated Answer:")
     print(f"{response['result']}")
-    
+
     print(f"\n[Step 5] Evaluation (Faithfulness Score): {response['eval_score']}")
     print("(A score closer to 1.0 means the answer is well-supported by the document)")
+
 
 if __name__ == "__main__":
     main()
