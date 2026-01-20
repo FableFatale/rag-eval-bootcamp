@@ -8,7 +8,8 @@ def main():
     knowledge_base = (
         "Antigravity is an AI agent designed by Google Deepmind. "
         "It specializes in pair programming and helping users build web applications. "
-        "The primary goal of Antigravity is to write high-quality, production-ready code. "
+        "The primary goal of Antigravity is to write high-quality, "
+        "production-ready code. "
         "It prefers using Vanilla CSS over Tailwind unless requested. "
         "It runs on Windows OS. "
     )

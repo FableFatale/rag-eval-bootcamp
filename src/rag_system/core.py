@@ -33,7 +33,7 @@ class OptimizationRAG:
             idx = i % 10
             vec[idx] += ord(char)
 
-        # Normalize vector (Cosine similarity requires normalized vectors or division by norm)
+        # Normalize vector (Cosine similarity requires normalized vectors)
         magnitude = math.sqrt(sum(v**2 for v in vec))
         if magnitude == 0:
             return vec
@@ -42,7 +42,7 @@ class OptimizationRAG:
     def _cosine_similarity(self, v1: List[float], v2: List[float]) -> float:
         """Math: Calculate cosine similarity between two vectors."""
         # Since we normalized them 'dot product' IS cosine similarity
-        return sum(a * b for a, b in zip(v1, v2))
+        return sum(a * b for a, b in zip(v1, v2, strict=True))
 
     def ingest_text(self, text: str, chunk_size: int = 100) -> None:
         """
