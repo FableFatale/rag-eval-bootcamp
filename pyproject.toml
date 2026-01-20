@@ -1,0 +1,57 @@
+[project]
+name = "rag-eval-bootcamp"
+version = "0.1.0"
+description = "A production-grade RAG system demonstration for skill assessment"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "langchain>=0.1.0",
+    "langchain-community>=0.0.10",
+    "langchain-openai>=0.0.5",
+    "chromadb>=0.4.22",
+    "python-dotenv>=1.0.0",
+    "tiktoken>=0.5.2"
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# --- Tool Configuration (Engineering Quality Assurance) ---
+
+[tool.ruff]
+# Ruff is a modern linter/formatter. 
+# "Engineering Awareness": Enforce line length and specific rules to maintain code quality.
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort (import sorting)
+    "B",  # flake8-bugbear (common design problems)
+]
+ignore = []
+
+[tool.mypy]
+# Mypy for static type checking.
+# "Engineering Awareness": Python is dynamic, but large projects need types for safety.
+python_version = "3.10"
+strict = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+# Pytest configuration
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+pythonpath = [
+    "src"
+]

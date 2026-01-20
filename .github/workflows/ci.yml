@@ -1,0 +1,49 @@
+name: AI Engineer CI Pipeline
+
+# Trigger execution on every push or pull request to the main branch
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # 1. Check out the code from the repository
+    - uses: actions/checkout@v3
+
+    # 2. Set up Python environment
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10" # Use a stable version for CI
+
+    # 3. Install Dependencies
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # We perform an editable install just like local dev
+        pip install -e .
+
+    # 4. Linting (Code Quality Gate)
+    # The job will FAIL if code quality is poor
+    - name: Lint with Ruff
+      run: |
+        pip install ruff
+        ruff check src tests
+
+    # 5. Type Checking (Static Analysis)
+    - name: Type Check with Mypy
+      run: |
+        pip install mypy
+        mypy src
+
+    # 6. Run Tests
+    # "Engineering Awareness": If tests fail, the deployment is blocked.
+    - name: Run Unit Tests
+      run: |
+        python -m unittest discover tests
+
