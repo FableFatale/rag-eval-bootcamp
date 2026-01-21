@@ -1,7 +1,7 @@
 from rag_system.core import OptimizationRAG
 
 
-def main():
+def main() -> None:
     print("🚀 Starting Pure Python RAG Demo (Framework-Free)...")
     print("-" * 50)
 

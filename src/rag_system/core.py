@@ -10,9 +10,9 @@ class OptimizationRAG:
     Demonstrates strong algorithmic fundamentals.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         # In-memory vector store: List of {"text": str, "vector": List[float]}
-        self.doc_store: List[Dict] = []
+        self.doc_store: List[Dict[str, Any]] = []
 
     def _simple_tokenize(self, text: str) -> List[str]:
         """Normalize and tokenize text."""
@@ -62,7 +62,7 @@ class OptimizationRAG:
 
         print(f"💾 Indexed {len(self.doc_store)} documents total.")
 
-    def query(self, question: str, top_k: int = 2) -> Dict:
+    def query(self, question: str, top_k: int = 2) -> Dict[str, Any]:
         """
         Retrieve relevant docs and simulate answer.
         """
